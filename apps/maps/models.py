@@ -1,6 +1,9 @@
 from django.contrib.gis.db import models
+from django.core.files.storage import FileSystemStorage
 
 # Create your models here.
+
+fs = FileSystemStorage(location='/media/photos')
 
 
 class Stop(models.Model):
@@ -17,3 +20,11 @@ class Route(models.Model):
     stops = models.ManyToManyField(Stop)
 
 
+# class Images(models.Model):
+#     """Pics model."""
+#     name = models.CharField(max_length=100)
+#     place = models.ForeignKey(Stop)
+#     photo = models.ImageField(storage=fs)
+#
+#     def __str__(self):
+#         return self.name
