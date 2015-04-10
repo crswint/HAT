@@ -19,27 +19,27 @@
 <div class="row clearfix">
     <div class="col-md-12-column">
         <div id="map"></div>
-        <center><a href='#' id='geolocate' class='ui-button'>Find me</a></center>
-+        <style>
-+        .ui-button {
-+  background:#3887BE;
-+  color:#FFF;
-+  display:block;
-+  position:absolute;
-+  top:50%;left:50%;
-+  width:160px;
-+  margin:-20px 0 0 -80px;
-+  z-index:100;
-+  text-align:center;
-+  padding:10px;
-+  border:1px solid rgba(0,0,0,0.4);
-+  border-radius:3px;
-+  }
-+  .ui-button:hover {
-+    background:#3074a4;
-+    color:#fff;
-+    }
-+    </style>
+        <a href='#' id='geolocate' class='ui-button'>Find me</a>
+        <style>
+        .ui-button {
+  background:#3887BE;
+  color:#FFF;
+  display:block;
+  position:absolute;
+  bottom:5%;left:50%;
+  width:160px;
+  margin:-20px 0 0 -80px;
+  z-index:100;
+  text-align:center;
+  padding:10px;
+  border:1px solid rgba(0,0,0,0.4);
+  border-radius:3px;
+  }
+  .ui-button:hover {
+    background:#3074a4;
+    color:#fff;
+    }
+    </style>
     </div>
 </div>
 
@@ -59,6 +59,11 @@
 
     L.mapbox.accessToken = 'pk.eyJ1IjoiY3Jzd2ludCIsImEiOiJnNktHVVJRIn0.JIC8FCyClaATfA5WR5-JyA';
     var map = L.mapbox.map('map', 'crswint.jljp9epk');
+
+    $.getJSON("{% url 'api:stops' %}", function (data) {
+        L.geoJson(data, {style: ouricon}).addTo(map);
+    });
+
     var myLayer = L.mapbox.featureLayer().addTo(map);
     if (!navigator.geolocation) {
     geolocate.innerHTML = 'Geolocation is not available';
