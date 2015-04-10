@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework_gis',
     'bootstrap3',
+    'bootstrap',
     'apps.maps',
 )
 
@@ -66,7 +67,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'gisc4530k',
         'USER': 'postgres',
-        'PASSWORD': 'geoAMASCOT',
+        'PASSWORD': 'geografio',
         'HOST': 'localhost',
         'PORT': 5432,
 

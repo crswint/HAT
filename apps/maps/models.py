@@ -20,7 +20,7 @@ class Route(models.Model):
     """This model will hold public transit bus routes information"""
     geom = models.MultiLineStringField(srid=4326)
     route_num = models.CharField(max_length=40)
-    stops = models.ManyToManyField(Stop)
+    stops = models.ManyToManyField(Stop, blank=True)
 
     def __str__(self):
         return "{}".format(self.route_num)
